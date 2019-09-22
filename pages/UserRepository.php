@@ -4,8 +4,7 @@ require('DB.php');
 
 class User {
     private $conn;
-    private $UID = null;
-    public $name = null;
+    private static $instance = null;
 
     function __construct()
     {
@@ -13,23 +12,32 @@ class User {
     }
 
     function getInstance() {
-        static $instance = null;
-        if($instance == null) {
-            $instance = new User();
+        if ( self::$instance == null ) {
+            self::$instance = new User();
         }
-        return $instance;
+        return self::$instance;
     }
 
     function userLogin($name, $pss) {
-        $result = $this->conn->query("SELECT * FROM Users where uname='{$name}'");
+        $result = $this->conn->query("SELECT pss FROM Users where uname='{$name}'");
         $user = mysqli_fetch_assoc($result);
-        $this->UID = $user["UID"];
-        $this->name = $user["uname"];
-        echo("Welcome {$user['FirstName']}");
+        if($user == "") {
+            return "Username Error";
+        }
+        else if($pss == $user["pss"]){
+            return true;
+        }
+        else {
+            return "Pss Error";
+        }
     }
 
     function userLogout() {
-        $this->UID = null;
-        $this->name = null;
+        self::$UID = null;
+        self::$name = null;
+    }
+
+    function getDetails($name) {
+        $result = $this->conn->query("SELECT * FROM Users where uname='{$name}'");
     }
 }
