@@ -26,7 +26,7 @@ else{ ?>
         </form>
         <a class=a1 href="forgotpassword.html">Forgot password?</a><br>
         <hr class=hr1><p class=p2>or</p><hr class=hr2><br>
-        <a class=a2 href="registrationform.html">Create a new account</a>
+        <a class=a2 href="pages/registrationform.php">Create a new account</a>
     </div>
     </body>
     </html>

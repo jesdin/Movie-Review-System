@@ -1,0 +1,100 @@
+.div{
+    border-style: solid;
+    border-color: tomato;
+    height: 530px;
+    width: 400px;
+    align : center;
+    margin-left:35%;
+    margin-top:6%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#fName,
+#lName,
+#username,
+#emailId,
+#password,
+#cPassword{
+
+    border:none;
+    background: transparent;
+    border-bottom: 3px solid tomato;
+    color: antiquewhite;
+}
+
+#fName:focus,
+#lName:focus,
+#username:focus,
+#emailId:focus,
+#password:focus,
+#cPassword:focus{
+    outline: none;
+    border-bottom: 3px solid chartreuse;
+}
+
+#done:focus{
+    outline: none;
+}
+
+#fName{
+    margin-left:6%;
+    height: 40px;
+    width: 350px;
+}
+
+#lName{
+    margin-top: 5%;
+    margin-left:6%;
+    height: 40px;
+    width: 350px;
+
+}
+
+#username{
+    margin-top:5%;
+    margin-left:6%;
+    height: 40px;
+    width: 350px;
+}
+
+#emailId{
+    margin-top:5%;
+    margin-left:6%;
+    height: 40px;
+    width: 350px;
+}
+
+#password{
+    margin-top:5%;
+    margin-left:6%;
+    height: 40px;
+    width: 350px;
+}
+
+#cPassword{
+    margin-top:5%;
+    margin-left:6%;
+    height: 40px;
+    width: 350px;
+}
+
+#done{
+    margin-top: 8%;
+    margin-left: 30%;
+    height: 40px;
+    width: 150px;
+    background: tomato;
+    color: antiquewhite;
+    letter-spacing: 1mm;
+    border-radius: 20px;
+    border: none;
+}
+
+.p1{
+    color: tomato;
+    font-size: 20px;
+    margin-left: 35%;
+    font-weight: bold;
+    letter-spacing: 1mm;
+    /* font-family: sans-serif;  */
+}

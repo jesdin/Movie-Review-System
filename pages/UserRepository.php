@@ -25,7 +25,7 @@ class User {
             return "Username Error";
         }
         else if($pss == $user["pss"]){
-            return true;
+            return "Exists";
         }
         else {
             return "Pss Error";
