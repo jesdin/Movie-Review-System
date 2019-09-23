@@ -45,4 +45,15 @@ class User {
         $r = $this->conn->query("INSERT INTO Users(FirstName, LastName, uname, email, pss) VALUES('{$fname}', '{$lname}', '{$uname}', '{$email}', '{$pss}')");
         return $r;
     }
+
+    function userNameExists($name) {
+    $r = $this->conn->query("SELECT * FROM Users WHERE uname='{$name}'");
+    $r = mysqli_fetch_assoc($r);
+    if($r == ''){
+        return false;
+    }
+    else {
+        return true;
+    }
+    }
 }
