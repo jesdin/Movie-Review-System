@@ -40,4 +40,9 @@ class User {
     function getDetails($name) {
         $result = $this->conn->query("SELECT * FROM Users where uname='{$name}'");
     }
+
+    function createUser($fname, $lname, $uname, $email, $pss, $cpss) {
+        $r = $this->conn->query("INSERT INTO Users(FirstName, LastName, uname, email, pss) VALUES('{$fname}', '{$lname}', '{$uname}', '{$email}', '{$pss}')");
+        return $r;
+    }
 }
