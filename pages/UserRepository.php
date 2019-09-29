@@ -32,11 +32,6 @@ class User {
         }
     }
 
-    function userLogout() {
-        self::$UID = null;
-        self::$name = null;
-    }
-
     function getDetails($name) {
         $result = $this->conn->query("SELECT * FROM Users where uname='{$name}'");
     }
