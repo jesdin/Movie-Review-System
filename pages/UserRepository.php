@@ -36,19 +36,30 @@ class User {
         $result = $this->conn->query("SELECT * FROM Users where uname='{$name}'");
     }
 
-    function createUser($fname, $lname, $uname, $email, $pss, $cpss) {
+    function createUser($fname, $lname, $uname, $email, $pss) {
         $r = $this->conn->query("INSERT INTO Users(FirstName, LastName, uname, email, pss) VALUES('{$fname}', '{$lname}', '{$uname}', '{$email}', '{$pss}')");
         return $r;
     }
 
     function userNameExists($name) {
-    $r = $this->conn->query("SELECT * FROM Users WHERE uname='{$name}'");
-    $r = mysqli_fetch_assoc($r);
-    if($r == ''){
-        return false;
+        $r = $this->conn->query("SELECT * FROM Users WHERE uname='{$name}'");
+        $r = mysqli_fetch_assoc($r);
+        if($r == ''){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
-    else {
-        return true;
-    }
+
+    function emailIsRegistered($email) {
+        $r = $this->conn->query("SELECT * FROM Users WHERE email='{$email}'");
+        $r = mysqli_fetch_assoc($r);
+        if($r == ''){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
