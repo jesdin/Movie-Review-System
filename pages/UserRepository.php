@@ -24,7 +24,7 @@ class User {
         if($user == "") {
             return "Username Error";
         }
-        else if($pss == $user["pss"]){
+        else if($pss == password_verify($pss,$user["pss"])){
             $_SESSION['user'] = $_POST['username'];
             return "Exists";
         }
@@ -38,7 +38,8 @@ class User {
     }
 
     function createUser($fname, $lname, $uname, $email, $pss) {
-        $r = $this->conn->query("INSERT INTO Users(FirstName, LastName, uname, email, pss) VALUES('{$fname}', '{$lname}', '{$uname}', '{$email}', '{$pss}')");
+        $hashed_password = password_hash($pss, PASSWORD_BCRYPT);
+        $r = $this->conn->query("INSERT INTO Users(FirstName, LastName, uname, email, pss) VALUES('{$fname}', '{$lname}', '{$uname}', '{$email}', '{$hashed_password}')");
         return $r;
     }
 
