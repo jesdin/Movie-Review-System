@@ -25,6 +25,7 @@ class User {
             return "Username Error";
         }
         else if($pss == $user["pss"]){
+            $_SESSION['user'] = $_POST['username'];
             return "Exists";
         }
         else {

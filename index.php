@@ -8,11 +8,32 @@ if(isset($_SESSION["user"]) and $_SESSION['user'] != null)
     echo("User is Logged in");
 //    header('Location: /Movie-Review-System');
 }
-else{ ?>
+else{
+
+?>
     <html>
     <head>
         <title>Log In</title>
         <link rel="stylesheet" href="css\index.css">
+        <script>
+            window.onload = function() {
+                var error = get('error')
+                if(error){
+                    if(error = 'Username is incorrect'){
+                        // TODO: Error Message
+                    }
+                    else if(error = 'password') {
+                        // TODO: Error Message
+                    }
+                }
+            };
+            function get(name){
+                if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+                    return decodeURIComponent(name[1]);
+                else
+                    return false;
+            }
+        </script>
     </head>
     <body background="images\background.jpg">
     <div class=div>
