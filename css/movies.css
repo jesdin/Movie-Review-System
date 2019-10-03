@@ -1,0 +1,131 @@
+form {
+    display: inline;
+}
+
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+.div1{
+    margin-right: 0;
+    margin-left: 0;
+    border: none;
+    border-color: tomato;
+    /*width: 1615px;*/
+    height: 70px;
+    margin-top: 0.5%;
+    background:rgba(0, 0, 0, 0.5);
+}
+
+.account {
+    text-align: right;
+    float: right;
+}
+
+.label1{
+    color: tomato;
+    font-size: 25px;
+    margin-left: 75%;
+    margin-top: 20%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.a1{
+    color: tomato;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+
+.a2{
+    color:tomato;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-right: 25px;
+}
+
+#all{
+    background: tomato;
+    border: solid tomato 3px;
+    height: 70px;
+    color: white;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 1px;
+    width: 200px;
+    cursor: grab;
+}
+
+#featured,
+#feedback{
+    margin-left: -0.5%;
+    background: transparent;
+    border: none;
+    /* border: solid tomato 3px; */
+    height: 70px;
+    color: tomato;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 1px;
+    width: 200px;
+    cursor: pointer;
+}
+
+#all:focus{
+    outline: none;
+}
+
+#featured:focus,
+#feedback:focus{
+   outline: none;
+}
+
+.divMovies{
+    border: solid tomato 3px;
+    height: 300px;
+    width: 1500px;
+    margin-top: 2%;
+    
+}
+
+.divMovies:hover{
+    background:rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+}
+
+.movieImg{
+    height: 290px;
+    width: 300px;
+    margin-top: 0.25%;
+    margin-left: 0.5%;
+}
+
+.p1{
+    color: tomato;
+    font-size: 25px;
+    letter-spacing: 1px;
+    margin-top: -19%;
+    margin-left: 22%;
+}
+
+.p2{
+    color: antiquewhite;
+    font-size: 20px;
+    margin-top: 1.5%;
+    margin-left: 22%;
+}
+
+#title,
+#desc,
+#genre{
+
+    border:none;
+    background: transparent;
+    border-bottom: 3px solid tomato;
+    color: antiquewhite;
+}
