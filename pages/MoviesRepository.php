@@ -44,7 +44,7 @@ class Movies {
         $this->conn = DB::getInstance()->conn;
     }
 
-    public function getInstance() {
+    public static function getInstance() {
         if ( self::$instance == null ) {
             self::$instance = new Movies();
         }
@@ -73,3 +73,9 @@ class Movies {
         return $this->movies;
     }
 }
+//
+//$movies = Movies::getInstance();
+//$movies->set(0);
+//foreach ($movies->get() as $movie) {
+//    echo($movie->getName());
+//}

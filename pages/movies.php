@@ -25,24 +25,18 @@
     </div>
 
     <?php
-    //     $sql = "SELECT title, descriptionn, genre, img from addmovie";
-    //     // $result = $conn-> query($sql);
-    //     $result = mysqli_query($conn,$sql);
-    //     if($result-> num_rows>0) 
-    //     {
-    //         while($row = $result -> fetch_assoc())
-    //         {
-    //             echo   '<div onclick="location.href="www.google.com";" class=divMovies>';
-    //             echo    '<img src='.$row["img"].' height="200" width="200" class="movieImg">';
-    //             echo    '<p class="p1">'.$row["title"].'</p>';
-    //             echo    '<p class="p2">'.$row["descriptionn"].'</p>';
-    //             echo    ' <p class="p2">Genre :'.$row["genre"].'</p>';
-    //             echo    '</div>';
-    //             // echo "<br><br><label><b>".$row["title"]."</b><br><br><i>".$row["descriptionn"]."</i><br><br>".$row["genre"]."<br><br><hr></label>";
-    //         }
-    //     }
-
-    // ?>
+        require('MoviesRepository.php');
+        $movies = Movies::getInstance();
+        $movies->set(0);
+        foreach ($movies->get() as $movie) {
+            echo   '<div onclick="location.href="www.google.com";" class=divMovies>';
+            echo    '<img src="data:image/jpeg;base64,'.base64_encode( $movie->getImage() ) .'"height="200" width="200" class="movieImg">';
+            echo    '<p class="p1">' .$movie->getName().'</p>';
+            echo    '<p class="p2">'.$movie->getDescription().'</p>';
+            echo    ' <p class="p2">Genre :'.$movie->getGenre()[0].'</p>';
+            echo    '</div>';
+        }
+    ?>
 
     </body>
 </html>
