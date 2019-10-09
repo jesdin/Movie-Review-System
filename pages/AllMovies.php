@@ -1,31 +1,14 @@
 <!doctype>
 <html>
-<head>
+    <head>
         <title>MOVIES</title>
         <link rel="stylesheet" href="../css/movies.css">
     </head>
-
     <body background="../images/background.jpg">
-    <div class="div1">
-        <form action="#" method="GET">
-            <button id="featured" type="submit">Featured Movies</button>
-        </form>
-        <form action="#" method="GET">
-            <button id="all" type="submit">All Movies</button>
-        </form>
-        <form action="#" method="GET">
-            <button id="feedback" type="submit">Feedback</button>
-        </form>
-        <p class="account">
-            <a class="a1" href="#">Account</a>
-            <a class="a2" href="loginpage.html">Logout</a>
-        </p>
-        </form>
-
-    </div>
 
     <?php
         require('MoviesRepository.php');
+        include('_navbar.php');
         $movies = Movies::getInstance();
         $movies->set(0);
         foreach ($movies->get() as $movie) {
