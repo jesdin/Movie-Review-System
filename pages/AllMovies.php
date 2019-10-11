@@ -13,26 +13,33 @@
             margin-top: 2%;
             }
 
-            .badge-info{
+            #badge{
             background: transparent;
+            height: 20px;
             border: solid tomato 2px;
             border-radius: 10px;
             color: tomato;
+            margin-top: 8px;
             margin-left: 1%;
             letter-spacing: 1px;
+            font-size: 10px;
             }
 
             .genre{
                 margin-left: 26%;
                 margin-top: -2.6%;
             }
+            /* #badge{
+                background: transparent;
+            } */
         </style>
     </head>
     <body background="../images/background.jpg">
 
     <?php
         require('MoviesRepository.php');
-        include('_navbar.php');
+        // include('_navbar.php');
+        include('navigationBar.php');
         $movies = Movies::getInstance();
         $movies->set(0);
         foreach ($movies->get() as $movie) {
@@ -45,7 +52,7 @@
             // }
             echo    ' <p class="p2">Genre :</p><p class=genre>';
             foreach($movie->getGenre() as $genre) {
-                echo    '<span class="badge badge-info">';
+                echo    '<span class="badge badge-info" id=badge>';
                   echo     $genre.'';
                   echo    '</span>';
                 }

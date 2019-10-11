@@ -20,7 +20,7 @@
                 height: 360px;
                 width: 1000px;
                 margin-top: 5%;
-                margin-left: 22%;
+                margin-left: 25%;
             }
 
             .poster{
@@ -40,7 +40,7 @@
             .p1{
                 color: tomato;
                 font-size: 18px;
-                margin-top: -135%;
+                margin-top: -140%;
                 margin-left: 120%;
                 letter-spacing: 2px;
             }
@@ -48,7 +48,7 @@
             .p2{
                 color: tomato;
                 font-size: 18px;
-                margin-top: 5%;
+                margin-top: -100%;
                 margin-left: 120%;
                 letter-spacing: 2px;
             }
@@ -72,7 +72,7 @@
                 color: antiquewhite;
                 outline: none;
                 margin-left: 120%;
-                margin-top: -5%;
+                margin-top: -120%;
                 height: 30px;
                 width: 500px;
             }
@@ -83,7 +83,7 @@
                 color: antiquewhite;
                 outline: none;
                 margin-left: 120%;
-                margin-top: -5%;
+                margin-top: 0.5%;
                 height:  120px;
                 width: 500px;
 
@@ -132,21 +132,21 @@
                 font-size: 15px;
                 width: 100px;
                 height: 30px;
-                margin-left: 120%;
-                margin-top: -15%;
+                margin-left: 200%;
+                margin-top: -10%;
             }
 
-            .container{
+            .container1{
                 margin-top: -5%;
-                margin-left:110%;
+                margin-left:118%;
                 width: 500px;
                 height: 100px;
                 /* border: solid tomato 3px; */
                 /* overflow-x: hidden;
                 overflow-y: scroll; */
                 /* overflow: auto; */
-                
             }
+
             
             
 
@@ -155,22 +155,25 @@
     <body background="../images/background.jpg">
 
     <?php
-        $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science Fiction', 'Thriller');
-        include('_navbar.php');
+        $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
+        include('navigationBar.php');
+        // include('_navbar.php');
         echo    '<div onclick="location.href="www.google.com";" class=divAddMovie>';
         echo    '<div class=addImage>';
         echo    '<form action="MoviesRepository.php" method="post"><img src="" id="moviePoster" class=poster>';
-        echo    '<input type="file" name="img" id="img" class=selectImage required>';
-        echo    '<p class=p1>Title:</p><input id="name" name="name" type=text placeholder="Enter Title" required autocomplete=off>';
-        echo    '<p class=p2>Description:</p><textarea id="description" name="description" cols="40" rows="5" placeholder="Enter description" required></textarea>';
+        echo    '<input style="font-size: 12px;" type="file" name="img" id="img" class=selectImage required>';
+        echo    '<p class=p1>Title:</p><input style="font-size: 15px;" id="name" name="name" type=text placeholder="Enter Title" required autocomplete=off>';
+        echo    '<p class=p2>Description:</p><textarea style="font-size: 15px;" id="description" name="description" cols="40" rows="5" placeholder="Enter description" required></textarea>';
         echo    '<p class=p3>Genre:</p>';
         echo    '<p class=p4>';
         // echo    '<input  id="genre" name="genre" type=text placeholder="Enter Genre" required autocomplete=off disabled>'; 
         // echo    '<div class="btn-group mr-2" role="group" aria-label="First group">';
-        echo    '<div class=container>';
+        echo    '<div class=container1>';
         foreach ($mGenre as $genre){
             echo    '&nbsp';
-            echo     '<button id='.$genre.'type="submit" class="badge badge-info">'.$genre.'</button>';
+            echo     '<button id='.$genre.'type="submit" class="badge badge-info" style="background:transparent;
+                        border: solid tomato 2px; border-radius: 10px; margin-left: 1%; margin-top: 1%; letter-spacing: 1px; 
+                        outline: none;font-size: 12px; color: antiquewhite;">'.$genre.'</button>';
             if($genre == $mGenre[6] || $genre == $mGenre[12])
             {
                 echo '<br>';
