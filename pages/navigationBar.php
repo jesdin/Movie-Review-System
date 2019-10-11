@@ -101,14 +101,26 @@
         /* border-radius: 50px; */
     }
 
+    .dropdown-menu{
+        background: rgb(169,169,169);
+        margin-left: 130px;
+        margin-top: 0px;
+        opacity: 0.9;
+        font-size: 15px;
+    }
+
+    .dropdown-item:hover{
+        background: tomato;
+        color: antiquewhite;
+
+    }
+
     </style>
 
 
     </head>
 
     <body background="../images/background.jpg">
-    <!-- <nav class=bg-custom> -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:rgba(0, 0, 0, 0.3)"> -->
     <br>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -121,6 +133,20 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Genre
         </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <?php
+                $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
+                foreach ($mGenre as $genre){
+                echo    '<a class="dropdown-item" href="#">'.$genre.'</a>';
+                }
+            ?>
+        <!-- <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Adventure</a>
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Action</a> -->
+        </div>
+
+
         <button class="nav-item nav-link" href="http://localhost/Movie-Review-System/pages/AddMovie.php" id="addMovie">Add Movie</button>
 
         <form class="form-inline my-2 my-lg-0">

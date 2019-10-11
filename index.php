@@ -15,7 +15,7 @@ else{
     <head>
         <title>Log In</title>
         <link rel="stylesheet" href="css\index.css">
-        <script>
+        <script src="pages\loginpage.js">
             window.onload = function() {
                 var error = get('error')
                 if(error){
@@ -33,9 +33,10 @@ else{
                 else
                     return false;
             }
+
         </script>
     </head>
-    <body background="images\background.jpg">
+    <body background="images\aveng.jpg">
     <div class=div>
         <form class=form method="POST" action="pages/login.php">
             <p class=p1>SIGN IN</p>
