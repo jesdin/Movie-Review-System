@@ -120,12 +120,36 @@ body {
     margin-left: 22%;
 }
 
+.p3{
+    color: antiquewhite;
+    border: tomato 1.5px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 1.5%;
+    margin-left: 22%;
+}
+
 #title,
-#desc,
-#genre{
+#desc{
 
     border:none;
     background: transparent;
     border-bottom: 3px solid tomato;
     color: antiquewhite;
+    outline: none;
+}
+
+.addMovie{
+    border: solid tomato 3px;
+    height: 300px;
+    width: 1500px;
+    margin-top: 2%;
+
+}
+
+.addImage{
+    border: none;
+    height : 275px;
+    width : 250px;
+    /* margin-top: 2%; */
 }

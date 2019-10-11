@@ -1,3 +1,4 @@
+
 <?php
 
 require ('UserRepository.php');
@@ -13,3 +14,5 @@ else if($r == "Username Error"){
 else {
     header('Location: /Movie-Review-System?error=password');
 }
+
+?>

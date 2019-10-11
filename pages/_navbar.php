@@ -6,7 +6,7 @@
         <button id="all" type="submit">All Movies</button>
     </form>
     <form action="#" method="GET">
-        <button id="feedback" type="submit">Feedback</button>
+        <button id="feedback" type="submit">Add Movie</button>
     </form>
     <p class="account">
         <a class="a1" href="#">Account</a>

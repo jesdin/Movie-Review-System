@@ -1,0 +1,14 @@
+.addImage{
+    border: solid tomato 3px;
+    height : 275px;
+    width : 250px;
+    margin-top: 2%;
+}
+
+.divMovies{
+    border: solid tomato 3px;
+    height: 300px;
+    width: 1500px;
+    margin-top: 2%;
+    
+}
