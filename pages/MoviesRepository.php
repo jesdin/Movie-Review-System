@@ -6,14 +6,14 @@ class Movie {
     private $id;
     private $name;
     private $description;
-    private $image;
+    private $img;
     private $genre;
 
-    public function set($_id, $_name, $_description, $_image, $_genre) {
+    public function set($_id, $_name, $_description, $_img, $_genre) {
         $this->id = $_id;
         $this->name = $_name;
         $this->description = $_description;
-        $this->image = $_image;
+        $this->img = $_img;
         $this->genre = $_genre;
     }
 
@@ -26,7 +26,7 @@ class Movie {
     }
 
     public function getImage() {
-        return $this->image;
+        return $this->img;
     }
 
     public function getGenre() {
