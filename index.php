@@ -15,7 +15,7 @@ else{
     <head>
         <title>Log In</title>
         <link rel="stylesheet" href="css\index.css">
-        <script src="pages\loginpage.js">
+        <script src="pages\imageSlideshow.js">
             window.onload = function() {
                 var error = get('error')
                 if(error){
@@ -36,16 +36,17 @@ else{
 
         </script>
     </head>
-    <body background="images\aveng.jpg">
+    <body background="images\aEndgame.jpg">
     <div class=div>
         <form class=form method="POST" action="pages/login.php">
             <p class=p1>SIGN IN</p>
-            <input id="username" name="username" type=text placeholder="Username" required>
+            <input id="username" name="username" type=text placeholder="Username" required autocomplete=off>
             <br><br><br>
-            <input id="password" name="password" type="password" placeholder="Password" required>
+            <input id="password" name="password" type="password" placeholder="Password" required autocomplete=off>
             <br><br><br>
             <button id="login" type="submit">SIGN IN</button>
         </form>
+        <br>
         <a class=a1 href="forgotpassword.html">Forgot password?</a><br>
         <hr class=hr1><p class=p2>or</p><hr class=hr2><br>
         <a class=a2 href="pages/registrationform.php">Create a new account</a>

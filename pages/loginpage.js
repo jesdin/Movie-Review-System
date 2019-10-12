@@ -1,9 +1,9 @@
 var cycle = 0;
-var allBackgrounds = [ "images/aveng.jpg", 
-                       "images/starwars.jpg",
-                        "images/captain.jpg",
-                        "images/gravity.jpg",
-                        "images/aqua.jpg"];
+var allBackgrounds = [ "../images/aEndgame.jpg", 
+                       "../images/newstarwars.jpg",
+                        "../images/captainmarvel.jpg",
+                        "../images/newgravity.jpg",
+                        "../images/aquaman.jpg"];
  
 setInterval(function() {
 	if (cycle < 5) {

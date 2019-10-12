@@ -128,7 +128,7 @@
                 background: tomato;
                 color: antiquewhite;
                 outline: none;
-                border-radius: 5px;
+                border-radius: 10px;
                 font-size: 15px;
                 width: 100px;
                 height: 30px;
