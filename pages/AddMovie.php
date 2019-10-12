@@ -4,8 +4,7 @@
         <title>MOVIES</title>
         <link rel="stylesheet" href="../css/movies.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-       
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
         <style>
             .addImage{
                 border: none;
@@ -118,7 +117,7 @@
                 /* opacity: 0.9; */
             }
 
-            .badge-info:inset{
+            .badge-info-selected{
                 background: tomato;
                 color: antiquewhite;
             }
@@ -147,17 +146,17 @@
                 /* overflow: auto; */
                 
             }
-            
-            
-
         </style>
+        <script>
+            var selectedGenre = [];
+        </script>
     </head>
     <body background="../images/background.jpg">
 
     <?php
-        $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science Fiction', 'Thriller');
+        $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
         include('_navbar.php');
-        echo    '<div onclick="location.href="www.google.com";" class=divAddMovie>';
+        echo    '<div class=divAddMovie>';
         echo    '<div class=addImage>';
         echo    '<form action="MoviesRepository.php" method="post"><img src="" id="moviePoster" class=poster>';
         echo    '<input type="file" name="img" id="img" class=selectImage required>';
@@ -170,15 +169,37 @@
         echo    '<div class=container>';
         foreach ($mGenre as $genre){
             echo    '&nbsp';
-            echo     '<button id='.$genre.'type="submit" class="badge badge-info">'.$genre.'</button>';
+            echo     '<text id='.$genre.' class="badge badge-info">'.$genre.'</text>';
+            ?>
+            <script>
+                $('#<?php echo $genre ?>').click(function() {
+                    // $('#<?php echo $genre ?>').css({
+                    //     'background-color': 'red',
+                    //     'color': 'white',
+                    //     'font-size': '44px'
+                    // });
+                    if($('#<?php echo $genre ?>').hasClass('badge badge-info')) {
+                        $('#<?php echo $genre ?>').removeClass('badge badge-info');
+                        $('#<?php echo $genre ?>').addClass('badge badge-info-selected');
+                        selectedGenre.push('<?php echo $genre ?>');
+                    }
+                    else{
+                        $('#<?php echo $genre ?>').removeClass('badge badge-info-selected');
+                        $('#<?php echo $genre ?>').addClass('badge badge-info');
+                        selectedGenre.pop('<?php echo $genre ?>');
+                    }
+                    console.log(selectedGenre);
+                });
+            </script>
+            <?php
             if($genre == $mGenre[6] || $genre == $mGenre[12])
             {
                 echo '<br>';
             }
 
         }      
-        echo    '</p>';
         echo    '</div>';
+        echo    '</p>';
         echo    '<button id="done" type="submit">DONE</button>';
         echo    '<script type="text/javascript" >
    
@@ -198,7 +219,7 @@
                 </script>';
         
 
-        echo    '</div></div></form>';
+        echo    '</div></div></form></div></div>';
 
         require('DB.php');
                 
