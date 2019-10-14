@@ -72,6 +72,20 @@ class Movies {
     public function get() {
         return $this->movies;
     }
+
+    public function addMovie($_name, $_description, $_img, $_genres) {
+//        echo    '<img src="data:image/jpeg;base64,'.base64_encode( $_img ) .'"height="200" width="200" class="movieImg">';
+        $_img = base64_encode($_img);
+        $this->conn->query("INSERT INTO Movies(Name, Description, Poster) VALUES('{$_name}', '{$_description}', '{$_img}')");
+        $_id = $this->conn->query("SELECT id FROM Movies WHERE Name='{$_name}'")->fetch_assoc();
+        $_id = $_id['id'];
+        print_r($_genres);
+        foreach($_genres as $genre) {
+            echo 'br';
+            echo $genre;
+            $this->conn->query("INSERT INTO Genres(MovieID, genre) VALUES({$_id}, '$genre')");
+        }
+    }
 }
 //
 //$movies = Movies::getInstance();

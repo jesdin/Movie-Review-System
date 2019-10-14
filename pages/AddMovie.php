@@ -158,12 +158,13 @@
         include('_navbar.php');
         echo    '<div class=divAddMovie>';
         echo    '<div class=addImage>';
-        echo    '<form action="MoviesRepository.php" method="post"><img src="" id="moviePoster" class=poster>';
+        echo    '<form action="add.php" method="post" enctype="multipart/form-data"><img src="" id="moviePoster" class=poster>';
         echo    '<input type="file" name="img" id="img" class=selectImage required>';
         echo    '<p class=p1>Title:</p><input id="name" name="name" type=text placeholder="Enter Title" required autocomplete=off>';
         echo    '<p class=p2>Description:</p><textarea id="description" name="description" cols="40" rows="5" placeholder="Enter description" required></textarea>';
         echo    '<p class=p3>Genre:</p>';
         echo    '<p class=p4>';
+        echo    '<input type="text" id="genres" name="genres" hidden>';
         // echo    '<input  id="genre" name="genre" type=text placeholder="Enter Genre" required autocomplete=off disabled>'; 
         // echo    '<div class="btn-group mr-2" role="group" aria-label="First group">';
         echo    '<div class=container>';
@@ -173,11 +174,6 @@
             ?>
             <script>
                 $('#<?php echo $genre ?>').click(function() {
-                    // $('#<?php echo $genre ?>').css({
-                    //     'background-color': 'red',
-                    //     'color': 'white',
-                    //     'font-size': '44px'
-                    // });
                     if($('#<?php echo $genre ?>').hasClass('badge badge-info')) {
                         $('#<?php echo $genre ?>').removeClass('badge badge-info');
                         $('#<?php echo $genre ?>').addClass('badge badge-info-selected');
@@ -188,6 +184,7 @@
                         $('#<?php echo $genre ?>').addClass('badge badge-info');
                         selectedGenre.pop('<?php echo $genre ?>');
                     }
+                    document.getElementById('genres').value = selectedGenre;
                     console.log(selectedGenre);
                 });
             </script>
@@ -202,11 +199,10 @@
         echo    '</p>';
         echo    '<button id="done" type="submit">DONE</button>';
         echo    '<script type="text/javascript" >
-   
                 function readURL(input) {
                     if (input.files && input.files[0]) {
                         var reader = new FileReader();
-                        
+
                         reader.onload = function (e) {
                             $("#moviePoster").attr("src", e.target.result);
                         }
