@@ -1,3 +1,12 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    if ($_SESSION['user'] == null) {
+        header('Location: /Movie-Review-System/');
+    }
+}
+?>
+
 <!doctype>
 <html>
     <head>
@@ -156,6 +165,7 @@
     <?php
         $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
         include('_navbar.php');
+
         echo    '<div class=divAddMovie>';
         echo    '<div class=addImage>';
         echo    '<form action="add.php" method="post" enctype="multipart/form-data"><img src="" id="moviePoster" class=poster>';

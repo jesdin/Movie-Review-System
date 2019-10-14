@@ -80,10 +80,8 @@ class Movies {
         $_id = $this->conn->query("SELECT id FROM Movies WHERE Name='{$_name}'")->fetch_assoc();
         $_id = $_id['id'];
         print_r($_genres);
-        foreach($_genres as $genre) {
-            echo 'br';
-            echo $genre;
-            $this->conn->query("INSERT INTO Genres(MovieID, genre) VALUES({$_id}, '$genre')");
+        foreach($_genres as $index => $genre) {
+            $r = $this->conn->query("INSERT INTO Genres(MovieID, ID, genre) VALUES({$_id}, {$index}, '$genre')");
         }
     }
 }
