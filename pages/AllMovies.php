@@ -38,7 +38,6 @@
 
     <?php
         require('MoviesRepository.php');
-
         // include('_navbar.php');
         include('navigationBar.php');
 

@@ -13,7 +13,8 @@ if (session_status() == PHP_SESSION_NONE) {
         <title>MOVIES</title>
         <link rel="stylesheet" href="../css/movies.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+       
         <style>
             .addImage{
                 border: none;
@@ -126,7 +127,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 /* opacity: 0.9; */
             }
 
-            .badge-info-selected{
+            .badge-info:inset{
                 background: tomato;
                 color: antiquewhite;
             }
@@ -136,7 +137,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 background: tomato;
                 color: antiquewhite;
                 outline: none;
-                border-radius: 5px;
+                border-radius: 10px;
                 font-size: 15px;
                 width: 100px;
                 height: 30px;
@@ -154,11 +155,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 overflow-y: scroll; */
                 /* overflow: auto; */
             }
-         
         </style>
-        <script>
-            var selectedGenre = [];
-        </script>
     </head>
     <body background="../images/background.jpg">
 
@@ -208,8 +205,8 @@ if (session_status() == PHP_SESSION_NONE) {
             }
 
         }      
-        echo    '</div>';
         echo    '</p>';
+        echo    '</div>';
         echo    '<button id="done" type="submit">DONE</button>';
         echo    '<script type="text/javascript" >
                 function readURL(input) {
@@ -228,7 +225,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 </script>';
         
 
-        echo    '</div></div></form></div></div>';
+        echo    '</div></div></form>';
 
         require('DB.php');
                 

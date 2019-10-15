@@ -54,16 +54,16 @@
         </script>
         
     </head>
-    <body background="images\aqua.jpg">
+    <body background="../images/aEndgame.jpg">
         <div class=div>
             <form class=form method="POST" action="register.php">
                 <p class=p1>REGISTER</p>
-                <input id="fName" name="fName" type="text" placeholder="Enter first name" maxlength="15" required>
-                <input id="lName" name="lName" type="text" placeholder="Enter last name" maxlength="15" required>
-                <input id="username" name="uName" onblur="checkUname()" type="text" placeholder="Enter username" maxlength="15" required>
-                <input id="emailId" name="email" onblur="checkEmail()" type="email" placeholder="Enter email id" required>
-                <input id="password" name="pss" type="password" placeholder="Enter password" minlength="4" required>
-                <input id="cPassword" name="cpss" type="password" placeholder="Confirm password" required>
+                <input id="fName" name="fName" type="text" placeholder="Enter first name" maxlength="15" required autocomplete=off>
+                <input id="lName" name="lName" type="text" placeholder="Enter last name" maxlength="15" required autocomplete=off>
+                <input id="username" name="uName" onblur="checkUname()" type="text" placeholder="Enter username" maxlength="15" required autocomplete=off>
+                <input id="emailId" name="email" onblur="checkEmail()" type="email" placeholder="Enter email id" required autocomplete=off>
+                <input id="password" name="pss" type="password" placeholder="Enter password" minlength="4" required autocomplete=off>
+                <input id="cPassword" name="cpss" type="password" placeholder="Confirm password" required autocomplete=off>
                 <button id="done" type="submit">Register</button>
             </form>
         </div>
