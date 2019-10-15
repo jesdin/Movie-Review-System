@@ -14,7 +14,9 @@ if (session_status() == PHP_SESSION_NONE) {
         <link rel="stylesheet" href="../css/movies.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-       
+       <script>
+        selectedGenre = new Array();
+       </script>
         <style>
             .addImage{
                 border: none;
@@ -163,9 +165,9 @@ if (session_status() == PHP_SESSION_NONE) {
         $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
         include('navigationBar.php');
         // include('_navbar.php');
-        echo    '<div onclick="location.href="www.google.com";" class=divAddMovie>';
+        echo    '<div onclick="location.href=\"www.google.com\";" class=divAddMovie>';
         echo    '<div class=addImage>';
-        echo    '<form action="MoviesRepository.php" method="post" enctype="multipart/form-data"><img src="" id="moviePoster" class=poster>';
+        echo    '<form action="add.php" method="post" enctype="multipart/form-data"><img src="" id="moviePoster" class=poster>';
         echo    '<input style="font-size: 12px;" type="file" name="img" id="img" class=selectImage required>';
         echo    '<p class=p1>Title:</p><input style="font-size: 15px;" id="name" name="name" type=text placeholder="Enter Title" required autocomplete=off>';
         echo    '<p class=p2>Description:</p><textarea style="font-size: 15px;" id="description" name="description" cols="40" rows="5" placeholder="Enter description" required></textarea>';
@@ -177,10 +179,9 @@ if (session_status() == PHP_SESSION_NONE) {
         echo    '<div class=container1>';
         foreach ($mGenre as $genre){
             echo    '&nbsp';
-            echo     '<button id='.$genre.'type="submit" class="badge badge-info" style="background:transparent;
+            echo     '<text id='.$genre.' class="badge badge-info" style="background:transparent;
                         border: solid tomato 2px; border-radius: 10px; margin-left: 1%; margin-top: 1%; letter-spacing: 1px; 
-                        outline: none;font-size: 12px; color: antiquewhite;">'.$genre.'</button>';
-            echo     '<text id='.$genre.' class="badge badge-info">'.$genre.'</text>';
+                        outline: none;font-size: 12px; color: antiquewhite;">'.$genre.'</text>';
             ?>
             <script>
                 $('#<?php echo $genre ?>').click(function() {

@@ -37,15 +37,15 @@
     <body background="../images/background.jpg">
 
     <?php
-        require('MoviesRepository.php');
-        // include('_navbar.php');
-        include('navigationBar.php');
-
         session_start();
         if($_SESSION['user'] === null)
         {
             header('Location: /Movie-Review-System/');
         }
+        
+        require('MoviesRepository.php');
+        // include('_navbar.php');
+        include('navigationBar.php');
 
         $movies = Movies::getInstance();
         $movies->set(0);
