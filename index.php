@@ -5,8 +5,7 @@ require('pages/UserRepository.php');
 session_start();
 if(isset($_SESSION["user"]) and $_SESSION['user'] != null)
 {
-    echo("User is Logged in");
-//    header('Location: /Movie-Review-System');
+    header('Location: /Movie-Review-System/pages/AllMovies.php');
 }
 else{
 
