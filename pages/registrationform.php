@@ -4,7 +4,7 @@
         <title>Register</title>
         <link rel="stylesheet" href="..\css\registrationform.css">
         <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
-        <script>
+        <script src="pages\loginpage.js">
             window.onload = function() {
                 var error = get('error')
                 if(error){
@@ -54,7 +54,7 @@
         </script>
         
     </head>
-    <body background="..\images\background.jpg">
+    <body background="images\aqua.jpg">
         <div class=div>
             <form class=form method="POST" action="register.php">
                 <p class=p1>REGISTER</p>
