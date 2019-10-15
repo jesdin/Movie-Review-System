@@ -6,7 +6,7 @@ session_start();
 $user = User::getInstance();
 $r = $user->userLogin($_POST['username'], $_POST['password']);
 if($r == "Exists") {
-//    header('Location: /Movie-Review-System');
+    header('Location: /Movie-Review-System/pages/AllMovies.php');
 }
 else if($r == "Username Error"){
     header('Location: /Movie-Review-System?error=username');

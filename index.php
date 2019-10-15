@@ -5,8 +5,7 @@ require('pages/UserRepository.php');
 session_start();
 if(isset($_SESSION["user"]) and $_SESSION['user'] != null)
 {
-    echo("User is Logged in");
-//    header('Location: /Movie-Review-System');
+    header('Location: /Movie-Review-System/pages/AllMovies.php');
 }
 else{
 
@@ -17,7 +16,8 @@ else{
         <link rel="stylesheet" href="css\index.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="pages\imageSlideshow.js">
-            window.onload = function() {+
+        <script src="pages\loginpage.js">
+            window.onload = function() {
                 var error = get('error')
                 if(error){
                 
