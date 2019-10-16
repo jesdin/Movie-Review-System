@@ -129,6 +129,12 @@ if (session_status() == PHP_SESSION_NONE) {
                 /* opacity: 0.9; */
             }
 
+            .badge-info-selected{
+                background: tomato;
+                color: antiquewhite;
+                /* opacity: 0.9; */
+            }
+
             .badge-info:inset{
                 background: tomato;
                 color: antiquewhite;
@@ -165,7 +171,7 @@ if (session_status() == PHP_SESSION_NONE) {
         $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
         include('navigationBar.php');
         // include('_navbar.php');
-        echo    '<div onclick="location.href=\"www.google.com\";" class=divAddMovie>';
+        echo    '<div class=divAddMovie>';
         echo    '<div class=addImage>';
         echo    '<form action="add.php" method="post" enctype="multipart/form-data"><img src="" id="moviePoster" class=poster>';
         echo    '<input style="font-size: 12px;" type="file" name="img" id="img" class=selectImage required>';
@@ -193,7 +199,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     else{
                         $('#<?php echo $genre ?>').removeClass('badge badge-info-selected');
                         $('#<?php echo $genre ?>').addClass('badge badge-info');
-                        selectedGenre.pop('<?php echo $genre ?>');
+                        selectedGenre.splice(selectedGenre.indexOf('<?php echo $genre ?>'), 1);
                     }
                     document.getElementById('genres').value = selectedGenre;
                     console.log(selectedGenre);
