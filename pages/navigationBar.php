@@ -129,7 +129,7 @@
     </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">  
         <div class="navbar-nav">
-        <button class="nav-item nav-link" href="http://localhost/Movie-Review-System/pages/AllMovies.php?#" id="allMovies">All Movies</button>
+        <button class="nav-item nav-link" href="http://localhost/Movie-Review-System/pages/AllMovies.php?#" id="allMovies" onclick="location.href='AllMovies.php'">All Movies</button>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Genre
         </a>
@@ -147,7 +147,7 @@
         </div>
 
 
-        <button class="nav-item nav-link" href="http://localhost/Movie-Review-System/pages/AddMovie.php" id="addMovie">Add Movie</button>
+        <button class="nav-item nav-link" onclick="location.href='AddMovie.php'"  id="addMovie">Add Movie</button>
 
         <form class="form-inline my-2 my-lg-0">
             <input id="searchBar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
