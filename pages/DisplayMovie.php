@@ -173,16 +173,13 @@
         echo    '<button id=post type="submit">Post</button>';
         echo    '</form>';
         
-           
-        // echo    '<textarea style="font-size: 15px;"  id=userComments align=justify name=myComment cols="40" rows="5" placeholder="Write your comment here">';
-
-        // for($i=0; $i<=10; $i++ )
-        // {
-        //     echo    '<p style="color:white;">hi</p>';
-        //     echo    '<br>';
-        // }
-
-        // echo    '</textarea>';
+        foreach($movie->getComments() as $comment)
+        {       
+            echo    '<br>';
+            echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" disabled>';
+            echo    $comment['comment'];
+            echo    '</textarea>';
+        }
         
         echo    '</div>';
 

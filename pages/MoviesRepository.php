@@ -17,11 +17,13 @@ class Movie {
         $this->img = $_img;
         $this->genre = $_genre;
         $conn = DB::getInstance()->conn;
-        $result = $conn->query("SELECT(UID, Comment) FROM Comments WHERE MovieId=".$_id);
+        $result = $conn->query("SELECT UID, Comment FROM Comments WHERE MovieId=".$_id);
+        echo($_id);
+        print_r($result == null);
         if($result != "") {
             $_comments = array();
             while($row = $result->fetch_assoc()) {
-                $_comments[] = array('UID' => $row("UID"), 'comment' => $row("Comment"));
+                $_comments[] = array('UID' => $row["UID"], 'comment' => $row["Comment"]);
             }
             $this->comments = $_comments;
         }
@@ -48,6 +50,10 @@ class Movie {
 
     public function getId() {
         return $this->id;
+    }
+
+    public function getComments() {
+        return  $this->comments;
     }
 }
 
@@ -115,9 +121,3 @@ class Movies {
         return $movie;
     }
 }
-//
-//$movies = Movies::getInstance();
-//$movies->set(0);
-//foreach ($movies->get() as $movie) {
-//    echo($movie->getName());
-//}
