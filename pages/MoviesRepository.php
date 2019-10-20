@@ -18,11 +18,16 @@ class Movie {
         $this->genre = $_genre;
         $conn = DB::getInstance()->conn;
         $result = $conn->query("SELECT(UID, Comment) FROM Comments WHERE MovieId=".$_id);
-        $_comments = array();
-        while($row = $this->fetch_assoc()) {
-            $_comments[] = array('UID' => $row("UID"), 'comment' => $row("Comment"));
+        if($result != "") {
+            $_comments = array();
+            while($row = $result->fetch_assoc()) {
+                $_comments[] = array('UID' => $row("UID"), 'comment' => $row("Comment"));
+            }
+            $this->comments = $_comments;
         }
-        $this->comments = $_comments;
+        else {
+            $this->comments = null;
+        }
     }
 
     public function getName() {
