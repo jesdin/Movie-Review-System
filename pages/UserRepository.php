@@ -64,4 +64,9 @@ class User {
             return true;
         }
     }
+
+    function getId($uname) {
+        $r = $this->conn->query("SELECT * FROM Users WHERE uname='{$uname}'")->fetch_assoc();
+        return $r['UID'];
+    }
 }
