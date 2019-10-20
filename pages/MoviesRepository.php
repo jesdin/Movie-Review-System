@@ -8,6 +8,7 @@ class Movie {
     private $description;
     private $img;
     private $genre;
+    private $comments;
 
     public function set($_id, $_name, $_description, $_img, $_genre) {
         $this->id = $_id;
@@ -15,6 +16,13 @@ class Movie {
         $this->description = $_description;
         $this->img = $_img;
         $this->genre = $_genre;
+        $conn = DB::getInstance()->conn;
+        $result = $conn->query("SELECT(UID, Comment) FROM Comments WHERE MovieId=".$_id);
+        $_comments = array();
+        while($row = $this->fetch_assoc()) {
+            $_comments[] = array('UID' => $row("UID"), 'comment' => $row("Comment"));
+        }
+        $this->comments = $_comments;
     }
 
     public function getName() {
