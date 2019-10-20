@@ -147,12 +147,16 @@
         // include('_navbar.php');
         include('navigationBar.php');
         
+        $id  = $_REQUEST['id'];
+        $movie = Movies::getInstance();
+        $movie = $movie->getMovie($id);
+
         echo    '<div id=movieInfo class="gradient-border">';
-        echo    '<p align=center id=movieTitle>Avengers: Endgame</p>';
-        echo    '<img  src=../images/endgame.jpg id=movieImg>';
-        echo    '<textarea style="font-size: 15px;" id="description" align=justify name="description" cols="40" rows="5" placeholder="Movie Description here" disabled>After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.</textarea>';
+        echo    '<p align=center id=movieTitle>' . $movie->getName(). '</p>';
+        // echo    '<img  src=../images/endgame.jpg id=movieImg>';
+        echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"id=movieImg>';
+        echo    '<textarea style="font-size: 15px;" id="description" align=justify name="description" cols="40" rows="5" placeholder="Movie Description here" disabled>'.$movie->getDescription(    ).'</textarea>';
         echo    '</div>';
-        
         echo    '<div id=commentArea>';
         echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" rows="5" placeholder="Write your comment here"></textarea>';
         echo    '<button id=post type="submit">Post</button>';

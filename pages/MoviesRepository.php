@@ -32,6 +32,10 @@ class Movie {
     public function getGenre() {
         return $this->genre;
     }
+
+    public function getId() {
+        return $this->id;
+    }
 }
 
 class Movies {
@@ -83,6 +87,19 @@ class Movies {
         foreach($_genres as $index => $genre) {
             $r = $this->conn->query("INSERT INTO Genres(MovieID, ID, genre) VALUES({$_id}, {$index}, '$genre')");
         }
+    }
+
+    public function getMovie($id) {
+        $movie = new Movie();
+        $genres = [];
+        $res = $this->conn->query("SELECT(genre) FROM Genres WHERE MovieID={$id}");
+        while($row = $res->fetch_assoc()) {
+            $genre[] = $row['genre'];
+        }
+        $res = $this->conn->query("SELECT * FROM Movies WHERE ID={$id}");
+        $res = $res->fetch_assoc();
+        $movie->set($id, $res['Name'], $res['Description'], $res['Poster'], $genre);
+        return $movie;
     }
 }
 //

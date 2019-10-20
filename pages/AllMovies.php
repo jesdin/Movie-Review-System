@@ -50,7 +50,7 @@
         $movies = Movies::getInstance();
         $movies->set(0);
         foreach ($movies->get() as $movie) {
-            echo   '<div onclick="location.href=\'www.google.com\';" class=divMovies>';
+            echo   '<div onclick="location.href=\'DisplayMovie.php?id=' .$movie->getId(). '\';" class=divMovies>';
 //            echo    '<img src="data:image/jpeg;base64,'.base64_encode( $movie->getImage() ) .'"height="200" width="200" class="movieImg">';
             echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"height="200" width="200" class="movieImg">';
             echo    '<p class="p1">' .$movie->getName().'</p>';
