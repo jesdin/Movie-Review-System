@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["user"]))
+    {
+        header('Location: /Movie-Review-System/');
+    }
+?>
+
 <!doctype html>
 
 <html>
@@ -158,8 +166,12 @@
         echo    '<textarea style="font-size: 15px;" id="description" align=justify name="description" cols="40" rows="5" placeholder="Movie Description here" disabled>'.$movie->getDescription(    ).'</textarea>';
         echo    '</div>';
         echo    '<div id=commentArea>';
+        echo    '<form method="POST" action="addComment.php">';
+        echo    '<input type="int" name="MID" value="'.$movie->getId().'" hidden>';
+        echo    '<input type="text" name="uname" value="'.$_SESSION['user'].'" hidden>';
         echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" rows="5" placeholder="Write your comment here"></textarea>';
         echo    '<button id=post type="submit">Post</button>';
+        echo    '</form>';
         
            
         // echo    '<textarea style="font-size: 15px;"  id=userComments align=justify name=myComment cols="40" rows="5" placeholder="Write your comment here">';
