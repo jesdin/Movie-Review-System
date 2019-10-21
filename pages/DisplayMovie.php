@@ -179,6 +179,19 @@
             echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" disabled>';
             echo    $comment['comment'];
             echo    '</textarea>';
+            echo    '<button class="btn" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/icons8-flag-2-25.png"></button>';
+            ?>
+            <script>
+                $("#<?php echo $comment['ID'] ?>").click(function() {
+                    // document.getElementById('<?php echo $comment['ID'] ?>').innerHTML = '<h1 style="color:white">Hey</h1>';
+                    console.log($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/icons8-flag-2-25.png');
+                    var src = ($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/icons8-flag-2-25.png') ? '../images/icons/reported.png' : '../images/icons/report.png';
+                    console.log(src);
+                    $("#img<?php echo $comment['ID'] ?>").attr('src', src);
+                    console.log($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/icons8-flag-2-25.png');
+                });
+            </script>
+            <?php
         }
         
         echo    '</div>';

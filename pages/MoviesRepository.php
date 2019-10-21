@@ -17,13 +17,13 @@ class Movie {
         $this->img = $_img;
         $this->genre = $_genre;
         $conn = DB::getInstance()->conn;
-        $result = $conn->query("SELECT UID, Comment FROM Comments WHERE MovieId=".$_id);
+        $result = $conn->query("SELECT UID, Comment, ID FROM Comments WHERE MovieId=".$_id);
         echo($_id);
         print_r($result == null);
         if($result != "") {
             $_comments = array();
             while($row = $result->fetch_assoc()) {
-                $_comments[] = array('UID' => $row["UID"], 'comment' => $row["Comment"]);
+                $_comments[] = array('ID' => $row["ID"], 'comment' => $row["Comment"], 'UID' => $row["UID"]);
             }
             $this->comments = $_comments;
         }
