@@ -44,6 +44,7 @@
                 color: tomato;
                 font-size: 15px;
                 letter-spacing: 1.5px;
+                margin-left: 7.5%;
 
             }
             .input1{
@@ -53,6 +54,7 @@
                 border: none;
                 border-bottom: solid tomato 1.5px;
                 width: 400px;
+                margin-left: 7.5%;
             }
 
             .input1:focus{
