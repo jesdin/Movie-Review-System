@@ -163,6 +163,10 @@ if (session_status() == PHP_SESSION_NONE) {
                 overflow-y: scroll; */
                 /* overflow: auto; */
             }
+
+            img {
+                background-image: url('../images/default.png');
+            }
         </style>
     </head>
     <body background="../images/background.jpg">
