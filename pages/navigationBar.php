@@ -155,7 +155,7 @@
             </form>
 
         <p>
-        <button type="button" class="btn btn-default btn-sm" id="user">
+        <button type="button" class="btn btn-default btn-sm" id="user" onclick="location.href='userDetails.php'">
         <span class="glyphicon glyphicon-user"></span> 
         </button>
          </p>
