@@ -18,8 +18,6 @@ class Movie {
         $this->genre = $_genre;
         $conn = DB::getInstance()->conn;
         $result = $conn->query("SELECT UID, Comment, ID FROM Comments WHERE MovieId=".$_id);
-        echo($_id);
-        print_r($result == null);
         if($result != "") {
             $_comments = array();
             while($row = $result->fetch_assoc()) {
@@ -97,7 +95,6 @@ class Movies {
     }
 
     public function addMovie($_name, $_description, $_img, $_genres) {
-//        echo    '<img src="data:image/jpeg;base64,'.base64_encode( $_img ) .'"height="200" width="200" class="movieImg">';
         $_img = base64_encode($_img);
         $this->conn->query("INSERT INTO Movies(Name, Description, Poster) VALUES('{$_name}', '{$_description}', '{$_img}')");
         $_id = $this->conn->query("SELECT id FROM Movies WHERE Name='{$_name}'")->fetch_assoc();

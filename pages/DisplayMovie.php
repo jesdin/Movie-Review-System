@@ -151,7 +151,8 @@
     <body background="../images/background.jpg">
 
     <?php
-        require('MoviesRepository.php');
+        require_once('MoviesRepository.php');
+        require_once('Report.php');
         // include('_navbar.php');
         include('navigationBar.php');
         
@@ -161,7 +162,6 @@
 
         echo    '<div id=movieInfo class="gradient-border">';
         echo    '<p align=center id=movieTitle>' . $movie->getName(). '</p>';
-        // echo    '<img  src=../images/endgame.jpg id=movieImg>';
         echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"id=movieImg>';
         echo    '<textarea style="font-size: 15px;" id="description" align=justify name="description" cols="40" rows="5" placeholder="Movie Description here" disabled>'.$movie->getDescription(    ).'</textarea>';
         echo    '</div>';
@@ -179,16 +179,21 @@
             echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" disabled>';
             echo    $comment['comment'];
             echo    '</textarea>';
-            echo    '<button class="btn" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/icons8-flag-2-25.png"></button>';
+            echo    '<button class="btn" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/report.png"></button>';
             ?>
             <script>
                 $("#<?php echo $comment['ID'] ?>").click(function() {
-                    // document.getElementById('<?php echo $comment['ID'] ?>').innerHTML = '<h1 style="color:white">Hey</h1>';
-                    console.log($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/icons8-flag-2-25.png');
-                    var src = ($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/icons8-flag-2-25.png') ? '../images/icons/reported.png' : '../images/icons/report.png';
-                    console.log(src);
+                    console.log(<?php echo $comment['ID'] ?>);
+                    let src = "";
+                    if($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/report.png') {
+                        src = '../images/icons/reported.png';
+                        <?php Reports::getInstance()->addReport((int)$comment['ID'], (int)$movie->getId()); ?>
+                    }
+                    if($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/reported.png'){
+                        src = '../images/icons/report.png';
+                        <?php Reports::getInstance()->removeReport((int)$comment['ID'], (int)$movie->getId()); ?>
+                    }
                     $("#img<?php echo $comment['ID'] ?>").attr('src', src);
-                    console.log($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/icons8-flag-2-25.png');
                 });
             </script>
             <?php
