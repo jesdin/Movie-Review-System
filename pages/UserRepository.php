@@ -35,6 +35,16 @@ class User {
 
     function getDetails($name) {
         $result = $this->conn->query("SELECT * FROM Users where uname='{$name}'");
+        $result = $result->fetch_assoc();
+        $uname = $name;
+        $uid = $result["UID"];
+        $firstName = $result["FirstName"];
+        $lastName = $result["LastName"];
+        $password = $reult["pss"];
+        $email = $result["email"];
+        $details = array($uname, $uid, $firstName, $lastName, $password, $email);
+        return $details;
+
     }
 
     function createUser($fname, $lname, $uname, $email, $pss) {
