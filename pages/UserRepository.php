@@ -40,9 +40,9 @@ class User {
         $uid = $result["UID"];
         $firstName = $result["FirstName"];
         $lastName = $result["LastName"];
-        $password = $reult["pss"];
+        $password = $result["pss"];
         $email = $result["email"];
-        $details = array($uname, $uid, $firstName, $lastName, $password, $email);
+        $details = array("uname" => $uname, "uid" => $uid, "fname" => $firstName, "lname" => $lastName, "pss" => $password, "email" => $email);
         return $details;
 
     }

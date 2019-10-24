@@ -1,3 +1,5 @@
+
+<?php session_start(); ?>
 <!doctype html>
 
 <html>
@@ -151,22 +153,26 @@
                 include('navigationBar.php');
 
             ?>
-
+            <?php
+                require_once('UserRepository.php');
+                $user = new User();
+                $user = $user->getDetails($_SESSION['user']);
+            ?>
             <div class="div1">
             <p class=a1>Username</p>
-            <input  id="username" name="username" class=input type=text  autocomplete=off disabled>
+            <input  id="username" name="username" class=input type=text  autocomplete=off disabled value="<?php echo($user['uname']) ?>">
             <br><br>
             <p class=p1>First Name</p>
-            <input  id="firstName" name="firstName" class=input type=text autocomplete=off disabled>
+            <input  id="firstName" name="firstName" class=input type=text autocomplete=off disabled value="<?php echo($user['fname']) ?>">
             <br><br>
             <p class=p1>Last Name</p>
-            <input  id="lastName" name="lastName" class=input type=text autocomplete=off disabled>
+            <input  id="lastName" name="lastName" class=input type=text autocomplete=off disabled value="<?php echo($user['lname']) ?>">
             <br><br>
             <p class=p1>Email id</p>
-            <input  id="emailId" name="emailId" class=input type=text autocomplete=off disabled>
+            <input  id="emailId" name="emailId" class=input type=text autocomplete=off disabled value="<?php echo($user['email']) ?>">
             <br><br>
             <button id="changePass" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Change Password</button>
-
+            <form type="POST" action="changepss.php">
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -178,24 +184,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <br>
-                       <p class=p2>Current Password:</p>
-                       <input  id="currentPass" name="currentPass" class=input1 type=text autocomplete=off ><br><br> 
+                        <br>
+                        <p class=p2>Current Password:</p>
+                        <input  id="currentPass" name="currentPass" class=input1 type=text autocomplete=off ><br><br> 
 
-                       <p class=p2>New Password:</p>
-                       <input  id="newPass" name="newPass" class=input1 type=text autocomplete=off ><br><br>
+                        <p class=p2>New Password:</p>
+                        <input  id="newPass" name="newPass" class=input1 type=text autocomplete=off ><br><br>
 
-                       <p class=p2>New Password Again:</p>
-                       <input  id="confirmNewPass" name="confirmNewPass" class=input1 type=text autocomplete=off ><br><br><br>                                  
+                        <p class=p2>New Password Again:</p>
+                        <input  id="confirmNewPass" name="confirmNewPass" class=input1 type=text autocomplete=off ><br><br><br>                                  
                     </div>
                     <div class="modal-footer">
                         <button id=close type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" id=confirm class="btn btn-primary">Confirm</button>
+                        <button type="submit" id=confirm class="btn btn-primary">Confirm</button>
                     </div>
                     </div>
                 </div>
                 </div>
-
+            </form>
             </div>
 
         </body>
