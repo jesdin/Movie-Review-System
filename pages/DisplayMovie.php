@@ -152,7 +152,7 @@
 
     <?php
         require_once('MoviesRepository.php');
-        require_once('Report.php');
+        // require_once('Report.php');
         // include('_navbar.php');
         include('navigationBar.php');
         
@@ -176,37 +176,30 @@
         foreach($movie->getComments() as $comment)
         {       
             echo    '<br>';
+            echo    '<form action="Report.php" type="POST">';
             echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" disabled>';
-            echo    $comment['comment'];
+            echo    $comment["comment"];
             echo    '</textarea>';
-            echo    '<button class="btn" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/report.png"></button>';
+            echo    '<input type="int" name="ID" value="'.$comment["ID"].'" hidden>';
+            echo    '<input type="int" name="movieID" value="'.$movie->getId().'" hidden>';
+            echo    '<button class="btn" type="Submit" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/report.png"></button>';
+            echo    '</form>';
             ?>
-            <script>
-                $("#<?php echo $comment['ID'] ?>").click(function() {
-                    console.log(<?php echo $comment['ID'] ?>);
-                    let src = "";
-                    if($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/report.png') {
-                        src = '../images/icons/reported.png';
-                        <?php Reports::getInstance()->addReport((int)$comment['ID'], (int)$movie->getId()); ?>
-                    }
-                    if($("#img<?php echo($comment['ID']) ?>").attr('src') === '../images/icons/reported.png'){
-                        src = '../images/icons/report.png';
-                        <?php Reports::getInstance()->removeReport((int)$comment['ID'], (int)$movie->getId()); ?>
-                    }
-                    $("#img<?php echo $comment['ID'] ?>").attr('src', src);
-                });
-            </script>
             <?php
         }
-        
         echo    '</div>';
-
-
-
     ?>
-
-
+    <script>
+        $(document).ready(function() {
+            <?php foreach($movie->getComments() as $comment) {
+                echo    'if('.$comment["reported"].' != 1) {
+                    $("#img'. $comment["ID"] .'").attr("src", "../images/icons/reported.png");
+                }
+                else{
+                    $("#img'. $comment["ID"] .'").attr("src", "../images/icons/report.png");
+                }';
+            } ?>
+        });
+    </script>
     </body>
-
-
 </html>

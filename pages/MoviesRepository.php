@@ -1,6 +1,7 @@
 <?php
 
-require('DB.php');
+require_once('DB.php');
+require_once('Report.php');
 
 class Movie {
     private $id;
@@ -21,7 +22,9 @@ class Movie {
         if($result != "") {
             $_comments = array();
             while($row = $result->fetch_assoc()) {
-                $_comments[] = array('ID' => $row["ID"], 'comment' => $row["Comment"], 'UID' => $row["UID"]);
+                $r = new Reports();
+                $r = $r->checkIfReported($row["ID"], $this->id);
+                $_comments[] = array('ID' => $row["ID"], 'comment' => $row["Comment"], 'UID' => $row["UID"], 'reported' => $r);
             }
             $this->comments = $_comments;
         }
