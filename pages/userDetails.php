@@ -141,14 +141,15 @@
                 font-size: 15px;
             }
             
-        </style>
+        </style >
         </head>
 
         <body background="../images/background.jpg">
 
             <?php
-                require('MoviesRepository.php');
+                require('UserRepository.php');
                 include('navigationBar.php');
+
             ?>
 
             <div class="div1">
