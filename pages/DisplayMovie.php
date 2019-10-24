@@ -193,7 +193,9 @@
     <body background="../images/background.jpg">
 
     <?php
-        require('MoviesRepository.php');
+        require_once('MoviesRepository.php');
+        // require_once('Report.php');
+        // include('_navbar.php');
         include('navigationBar.php');
         
         $id  = $_REQUEST['id'];
@@ -202,7 +204,6 @@
 
         echo    '<div id=movieInfo class="gradient-border">';
         echo    '<p align=center id=movieTitle>' . $movie->getName(). '</p>';
-        // echo    '<img  src=../images/endgame.jpg id=movieImg>';
         echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"id=movieImg>';
         echo    '<label style="font-size: 15px;" id="description" align=justify name="description">'.$movie->getDescription().'</label>';
 `        echo    '</div>';
@@ -218,12 +219,30 @@
         foreach($movie->getComments() as $comment)
         {       
             echo    '<br>';
+            echo    '<form action="Report.php" type="POST">';
             echo    '<label id=username>'.$_SESSION["user"].'</label><br>';
             echo    '<label id="myComment" align=justify>'.$comment['comment'].'</label>';
+            echo    '<input type="int" name="ID" value="'.$comment["ID"].'" hidden>';
+            echo    '<input type="int" name="movieID" value="'.$movie->getId().'" hidden>';
+            echo    '<button class="btn" type="Submit" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/report.png"></button>';
+            echo    '</form>';
+            ?>
+            <?php
         }
         echo    '</div>';
-
     ?>
+    <script>
+        $(document).ready(function() {
+            <?php foreach($movie->getComments() as $comment) {
+                echo    'if('.$comment["reported"].' != 1) {
+                    $("#img'. $comment["ID"] .'").attr("src", "../images/icons/reported.png");
+                }
+                else{
+                    $("#img'. $comment["ID"] .'").attr("src", "../images/icons/report.png");
+                }';
+            } ?>
+        });
+    </script>
 
     </body>
 </html>

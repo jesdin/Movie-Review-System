@@ -1,6 +1,7 @@
 <?php
 
-require('DB.php');
+require_once('DB.php');
+require_once('Report.php');
 
 class Movie {
     private $id;
@@ -17,13 +18,13 @@ class Movie {
         $this->img = $_img;
         $this->genre = $_genre;
         $conn = DB::getInstance()->conn;
-        $result = $conn->query("SELECT UID, Comment FROM Comments WHERE MovieId=".$_id);
-        echo($_id);
-        print_r($result == null);
+        $result = $conn->query("SELECT UID, Comment, ID FROM Comments WHERE MovieId=".$_id);
         if($result != "") {
             $_comments = array();
             while($row = $result->fetch_assoc()) {
-                $_comments[] = array('UID' => $row["UID"], 'comment' => $row["Comment"]);
+                $r = new Reports();
+                $r = $r->checkIfReported($row["ID"], $this->id);
+                $_comments[] = array('ID' => $row["ID"], 'comment' => $row["Comment"], 'UID' => $row["UID"], 'reported' => $r);
             }
             $this->comments = $_comments;
         }
@@ -97,7 +98,6 @@ class Movies {
     }
 
     public function addMovie($_name, $_description, $_img, $_genres) {
-//        echo    '<img src="data:image/jpeg;base64,'.base64_encode( $_img ) .'"height="200" width="200" class="movieImg">';
         $_img = base64_encode($_img);
         $this->conn->query("INSERT INTO Movies(Name, Description, Poster) VALUES('{$_name}', '{$_description}', '{$_img}')");
         $_id = $this->conn->query("SELECT id FROM Movies WHERE Name='{$_name}'")->fetch_assoc();
