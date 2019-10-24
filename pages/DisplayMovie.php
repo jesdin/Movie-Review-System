@@ -109,6 +109,13 @@
                 height: 125px;
             }
 
+            #displayComment{
+                color: antiquewhite;
+                font-size: 15px;
+                width: 700px;
+                height: 125px;
+            }
+
             #myComment:focus{
                 outline: none;
                 border: solid tomato 1.5px;
@@ -145,12 +152,13 @@
             }
 
             #reviews{
+                /* margin-top: 5%; */
                 height: 600px;
                 width: 700px;
-                margin-top: -27.5%;
-                margin-left: 26%;
-                /* background: rgba(0, 0, 0, 0.1); */
-                background: transparent;
+                /* margin-top: -27.5%; */
+                /* margin-left: 23%; */
+                background: rgba(0, 0, 0, 0.1);
+                /* background: transparent; */
                 border: none;
                 overflow-y: scroll;
             }
@@ -167,7 +175,7 @@
             #username{
                 color: tomato;
                 font-size: 14px;
-                margin-left: 2%;
+                /* margin-left: 2%; */
                 letter-spacing: 1px;
                 font-weight: 500;
 
@@ -185,6 +193,11 @@
             }
             ::-webkit-scrollbar {
             display: none;
+            }
+
+            .btn{
+                margin-top: -42%;
+                margin-left: 93%;
             }
 
         </style>
@@ -206,7 +219,7 @@
         echo    '<p align=center id=movieTitle>' . $movie->getName(). '</p>';
         echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"id=movieImg>';
         echo    '<label style="font-size: 15px;" id="description" align=justify name="description">'.$movie->getDescription().'</label>';
-`        echo    '</div>';
+        echo    '</div>';
         echo    '<div id=commentArea>';
         echo    '<form method="POST" action="addComment.php">';
         echo    '<input type="int" name="MID" value="'.$movie->getId().'" hidden>';
@@ -215,20 +228,26 @@
         echo    '<button id=post type="submit">Post</button>';
 
         echo    '</form>';
+        echo    '<p style="color: tomato; font-weight: lighter; font-size:25px; letter-spacing: 1.5px;margin-top: 3%;">Reviews</p>';
+        echo    '<div id=reviews>';
+        
         
         foreach($movie->getComments() as $comment)
         {       
             echo    '<br>';
             echo    '<form action="Report.php" type="POST">';
+            echo    '<div id=comment>';
             echo    '<label id=username>'.$_SESSION["user"].'</label><br>';
-            echo    '<label id="myComment" align=justify>'.$comment['comment'].'</label>';
+            echo    '<label id="displayComment" align=justify>'.$comment['comment'].'</label>';
             echo    '<input type="int" name="ID" value="'.$comment["ID"].'" hidden>';
             echo    '<input type="int" name="movieID" value="'.$movie->getId().'" hidden>';
             echo    '<button class="btn" type="Submit" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/report.png"></button>';
+            echo    '</div>';
             echo    '</form>';
             ?>
             <?php
         }
+        echo    '</div>';
         echo    '</div>';
     ?>
     <script>
