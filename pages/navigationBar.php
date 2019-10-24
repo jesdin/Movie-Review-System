@@ -137,7 +137,7 @@
             <?php
                 $mGenre = array('Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Fantasy', 'Historical', 'Horror', 'Mystery', 'Political', 'Romance', 'Science-Fiction', 'Thriller');
                 foreach ($mGenre as $genre){
-                echo    '<a class="dropdown-item" href="http://localhost/Movie-Review-System/pages/GenreSort.php?#">'.$genre.'</a>';
+                echo    '<a class="dropdown-item" href="http://localhost/Movie-Review-System/pages/GenreSort.php?genre='. $genre. '">'.$genre.'</a>';
                 }
             ?>
         <!-- <a class="dropdown-item" href="#">Action</a>

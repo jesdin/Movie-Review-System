@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["user"]))
+    {
+        header('Location: /Movie-Review-System/');
+    }
+?>
+
 <!doctype html>
 
 <html>
@@ -188,37 +196,34 @@
         require('MoviesRepository.php');
         include('navigationBar.php');
         
+        $id  = $_REQUEST['id'];
+        $movie = Movies::getInstance();
+        $movie = $movie->getMovie($id);
+
         echo    '<div id=movieInfo class="gradient-border">';
-        echo    '<p align=center id=movieTitle>Avengers: Endgame</p>';
-        echo    '<img  src=../images/endgame.jpg id=movieImg>';
-        echo    '<label style="font-size: 15px;" id="description" align=justify name="description">Movie Description Here</label>';
-        echo    '</div>';
-        
+        echo    '<p align=center id=movieTitle>' . $movie->getName(). '</p>';
+        // echo    '<img  src=../images/endgame.jpg id=movieImg>';
+        echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"id=movieImg>';
+        echo    '<label style="font-size: 15px;" id="description" align=justify name="description">'.$movie->getDescription().'</label>';
+`        echo    '</div>';
         echo    '<div id=commentArea>';
+        echo    '<form method="POST" action="addComment.php">';
+        echo    '<input type="int" name="MID" value="'.$movie->getId().'" hidden>';
+        echo    '<input type="text" name="uname" value="'.$_SESSION['user'].'" hidden>';
         echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" rows="5" placeholder="Write your comment here"></textarea>';
         echo    '<button id=post type="submit">Post</button>';
-        echo    '<p style="color: tomato; font-size: 25px; font-weight: lighter; letter-spacing: 1.5px; margin-top:3%;">Reviews</p>';
-        
 
-        echo    '</div>';
-        echo    '<div id=reviews>';
-        for($i=0; $i<=5; $i++ )
-        {
-            echo    '<div id=comment>';
-            echo    '<label id=username>Username</label><br>';
-            echo    '<label id=userComment align=justify>Comment here</label>';
-            echo    '</div>';
+        echo    '</form>';
+        
+        foreach($movie->getComments() as $comment)
+        {       
+            echo    '<br>';
+            echo    '<label id=username>'.$_SESSION["user"].'</label><br>';
+            echo    '<label id="myComment" align=justify>'.$comment['comment'].'</label>';
         }
-
-        
         echo    '</div>';
-
-
 
     ?>
 
-
     </body>
-
-
 </html>

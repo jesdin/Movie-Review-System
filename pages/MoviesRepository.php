@@ -8,6 +8,7 @@ class Movie {
     private $description;
     private $img;
     private $genre;
+    private $comments;
 
     public function set($_id, $_name, $_description, $_img, $_genre) {
         $this->id = $_id;
@@ -15,6 +16,20 @@ class Movie {
         $this->description = $_description;
         $this->img = $_img;
         $this->genre = $_genre;
+        $conn = DB::getInstance()->conn;
+        $result = $conn->query("SELECT UID, Comment FROM Comments WHERE MovieId=".$_id);
+        echo($_id);
+        print_r($result == null);
+        if($result != "") {
+            $_comments = array();
+            while($row = $result->fetch_assoc()) {
+                $_comments[] = array('UID' => $row["UID"], 'comment' => $row["Comment"]);
+            }
+            $this->comments = $_comments;
+        }
+        else {
+            $this->comments = null;
+        }
     }
 
     public function getName() {
@@ -31,6 +46,14 @@ class Movie {
 
     public function getGenre() {
         return $this->genre;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getComments() {
+        return  $this->comments;
     }
 }
 
@@ -84,10 +107,17 @@ class Movies {
             $r = $this->conn->query("INSERT INTO Genres(MovieID, ID, genre) VALUES({$_id}, {$index}, '$genre')");
         }
     }
+
+    public function getMovie($id) {
+        $movie = new Movie();
+        $genres = [];
+        $res = $this->conn->query("SELECT(genre) FROM Genres WHERE MovieID={$id}");
+        while($row = $res->fetch_assoc()) {
+            $genre[] = $row['genre'];
+        }
+        $res = $this->conn->query("SELECT * FROM Movies WHERE ID={$id}");
+        $res = $res->fetch_assoc();
+        $movie->set($id, $res['Name'], $res['Description'], $res['Poster'], $genre);
+        return $movie;
+    }
 }
-//
-//$movies = Movies::getInstance();
-//$movies->set(0);
-//foreach ($movies->get() as $movie) {
-//    echo($movie->getName());
-//}
