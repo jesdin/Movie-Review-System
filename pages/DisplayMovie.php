@@ -53,7 +53,8 @@
                 margin-left: 7%;
                 border: none;
                 margin-top: 2%;
-                align: justify;
+                font-weight: 300;
+                overflow-y: scroll;
             }
 
             .gradient-border {
@@ -69,11 +70,11 @@
                 left: calc(-1 * var(--borderWidth));
                 height: calc(100% + var(--borderWidth) * 2);
                 width: calc(100% + var(--borderWidth) * 2);
-                /* background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82); */
-                background: linear-gradient(60deg, #ff5500, #fa0000, #ff6924, #b3450b, #d67711, #e8553f, #ff3333, #ffc14f);
+                background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+                /* background: linear-gradient(60deg, #ff5500, #fa0000, #ff6924, #b3450b, #d67711, #e8553f, #ff3333, #ffc14f); */
                 border-radius: calc(2 * var(--borderWidth));
                 z-index: -1;
-                animation: animatedgradient 5s ease alternate infinite;
+                animation: animatedgradient 3s ease alternate infinite;
                 background-size: 300% 300%;
                 }
 
@@ -143,7 +144,48 @@
                 
             }
 
-            
+            #reviews{
+                height: 600px;
+                width: 700px;
+                margin-top: -27.5%;
+                margin-left: 26%;
+                /* background: rgba(0, 0, 0, 0.1); */
+                background: transparent;
+                border: none;
+                overflow-y: scroll;
+            }
+
+            #comment{
+                height: 120px;
+                width: 700px;
+                background: rgba(0, 0, 0, 0.2);
+                /* border: solid antiquewhite 0.5px; */
+                margin-top: 2%;
+                /* margin-left: 2.5%; */
+            }
+
+            #username{
+                color: tomato;
+                font-size: 14px;
+                margin-left: 2%;
+                letter-spacing: 1px;
+                font-weight: 500;
+
+            }
+
+            #userComment{
+                color: antiquewhite;
+                font-size: 14px;
+                margin-left: 2%;
+                letter-spacing: 1px;
+                font-weight: lighter;
+                margin-right: 2%;
+                overflow-y: scroll;
+
+            }
+            ::-webkit-scrollbar {
+            display: none;
+            }
 
         </style>
     </head>
@@ -163,23 +205,23 @@
         echo    '<div id=movieInfo class="gradient-border">';
         echo    '<p align=center id=movieTitle>' . $movie->getName(). '</p>';
         echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"id=movieImg>';
-        echo    '<textarea style="font-size: 15px;" id="description" align=justify name="description" cols="40" rows="5" placeholder="Movie Description here" disabled>'.$movie->getDescription(    ).'</textarea>';
-        echo    '</div>';
+        echo    '<label style="font-size: 15px;" id="description" align=justify name="description">'.$movie->getDescription().'</label>';
+`        echo    '</div>';
         echo    '<div id=commentArea>';
         echo    '<form method="POST" action="addComment.php">';
         echo    '<input type="int" name="MID" value="'.$movie->getId().'" hidden>';
         echo    '<input type="text" name="uname" value="'.$_SESSION['user'].'" hidden>';
         echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" rows="5" placeholder="Write your comment here"></textarea>';
         echo    '<button id=post type="submit">Post</button>';
+
         echo    '</form>';
         
         foreach($movie->getComments() as $comment)
         {       
             echo    '<br>';
             echo    '<form action="Report.php" type="POST">';
-            echo    '<textarea style="font-size: 15px;" id=myComment align=justify name=myComment cols="40" disabled>';
-            echo    $comment["comment"];
-            echo    '</textarea>';
+            echo    '<label id=username>'.$_SESSION["user"].'</label><br>';
+            echo    '<label id="myComment" align=justify>'.$comment['comment'].'</label>';
             echo    '<input type="int" name="ID" value="'.$comment["ID"].'" hidden>';
             echo    '<input type="int" name="movieID" value="'.$movie->getId().'" hidden>';
             echo    '<button class="btn" type="Submit" id="'.$comment['ID'].'"><img id="img'.$comment['ID'].'" src="../images/icons/report.png"></button>';
@@ -201,5 +243,6 @@
             } ?>
         });
     </script>
+
     </body>
 </html>
