@@ -29,9 +29,21 @@
                 margin-left: 26%;
                 margin-top: -2.6%;
             }
-            /* #badge{
-                background: transparent;
-            } */
+            
+            #desc{
+                overflow-y: scroll;
+                font-size: 14px;
+                font-weight: 300;
+                border: none;
+                width: 1140px;
+                height: 100px;
+                margin-left: 22%;
+            }
+
+            ::-webkit-scrollbar {
+            display: none;
+            }
+
         </style>
     </head>
     <body background="../images/background.jpg">
@@ -50,11 +62,11 @@
         $movies = Movies::getInstance();
         $movies->set(0);
         foreach ($movies->get() as $movie) {
-            echo   '<div onclick="location.href=\'DisplayMovie.php?id=' .$movie->getId(). '\';" class=divMovies>';
+        echo   '<div onclick="location.href=\'DisplayMovie.php?id=' .$movie->getId(). '\';" class=divMovies>';
 //            echo    '<img src="data:image/jpeg;base64,'.base64_encode( $movie->getImage() ) .'"height="200" width="200" class="movieImg">';
             echo    '<img src="data:image/jpeg;base64,' . $movie->getImage() .'"height="200" width="200" class="movieImg">';
             echo    '<p class="p1">' .$movie->getName().'</p>';
-            echo    '<p class="p2">'.$movie->getDescription().'</p>';
+            echo    '<label align=justify id=desc>'.$movie->getDescription().'</label>';
             echo    ' <p class="p2">Genre :</p><p class=genre>';
             foreach($movie->getGenre() as $genre) {
                 echo    '<span class="badge badge-info" id=badge>';

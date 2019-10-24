@@ -150,7 +150,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 width: 100px;
                 height: 30px;
                 margin-left: 200%;
-                margin-top: -10%;
+                margin-top: -3%;
             }
 
             .container1{
@@ -162,6 +162,10 @@ if (session_status() == PHP_SESSION_NONE) {
                 /* overflow-x: hidden;
                 overflow-y: scroll; */
                 /* overflow: auto; */
+            }
+
+            img {
+                background-image: url('../images/default.png');
             }
         </style>
     </head>
@@ -186,8 +190,14 @@ if (session_status() == PHP_SESSION_NONE) {
         foreach ($mGenre as $genre){
             echo    '&nbsp';
             echo     '<text id='.$genre.' class="badge badge-info" style="background:transparent;
-                        border: solid tomato 2px; border-radius: 10px; margin-left: 1%; margin-top: 1%; letter-spacing: 1px; 
+                        border: solid tomato 2px; border-radius: 10px; margin-left: 0.5%; margin-top: 1%; letter-spacing: 1px; 
                         outline: none;font-size: 12px; color: antiquewhite;">'.$genre.'</text>';
+            // if($genre == $mGenre[12])
+            // {
+            //     echo '<br>';
+            // }
+            
+            
             ?>
             <script>
                 $('#<?php echo $genre ?>').click(function() {
@@ -206,7 +216,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 });
             </script>
             <?php
-            if($genre == $mGenre[6] || $genre == $mGenre[12])
+            if($genre == $mGenre[12])
             {
                 echo '<br>';
             }
