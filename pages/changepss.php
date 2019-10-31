@@ -13,3 +13,4 @@ if(isset($_POST['uid'])){
     }
 }
 
+header('Location: /Movie-Review-System/pages/AllMovies.php');
