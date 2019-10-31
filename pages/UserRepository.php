@@ -79,4 +79,19 @@ class User {
         $r = $this->conn->query("SELECT * FROM Users WHERE uname='{$uname}'")->fetch_assoc();
         return $r['UID'];
     }
+
+    function pssIsCorrect($uid, $pss) {
+    $res = $this->conn->query("SELECT * from Users where UID={$uid}");
+        $res = $res->fetch_assoc();
+        if($pss == password_verify($pss, $res['pss']) ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function changePss($uid, $pss) {
+    $this->conn->querry("UPDATE Users SET pss='{$pss}' where UID={$uid}");
+    }
 }
