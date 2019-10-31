@@ -40,9 +40,9 @@ class User {
         $uid = $result["UID"];
         $firstName = $result["FirstName"];
         $lastName = $result["LastName"];
-        $password = $reult["pss"];
+        $password = $result["pss"];
         $email = $result["email"];
-        $details = array($uname, $uid, $firstName, $lastName, $password, $email);
+        $details = array("uname" => $uname, "uid" => $uid, "fname" => $firstName, "lname" => $lastName, "pss" => $password, "email" => $email);
         return $details;
 
     }
@@ -78,5 +78,20 @@ class User {
     function getId($uname) {
         $r = $this->conn->query("SELECT * FROM Users WHERE uname='{$uname}'")->fetch_assoc();
         return $r['UID'];
+    }
+
+    function pssIsCorrect($uid, $pss) {
+    $res = $this->conn->query("SELECT * from Users where UID={$uid}");
+        $res = $res->fetch_assoc();
+        if($pss == password_verify($pss, $res['pss']) ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function changePss($uid, $pss) {
+    $this->conn->querry("UPDATE Users SET pss='{$pss}' where UID={$uid}");
     }
 }
