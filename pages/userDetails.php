@@ -183,22 +183,25 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <br>
-                        <p class=p2>Current Password:</p>
-                        <input  id="currentPass" name="currentPass" class=input1 type=text autocomplete=off ><br><br> 
+                    <form action="changepss.php" method="POST">
+                        <input type="number" name="uid" value="<?php echo($user['uid']) ?>">
+                        <div class="modal-body">
+                            <br>
+                            <p class=p2>Current Password:</p>
+                            <input  id="currentPass" name="currentPass" class=input1 type=text autocomplete=off ><br><br> 
 
-                        <p class=p2>New Password:</p>
-                        <input  id="newPass" name="newPass" class=input1 type=text autocomplete=off ><br><br>
+                            <p class=p2>New Password:</p>
+                            <input  id="newPass" name="newPass" class=input1 type=text autocomplete=off ><br><br>
 
-                        <p class=p2>New Password Again:</p>
-                        <input  id="confirmNewPass" name="confirmNewPass" class=input1 type=text autocomplete=off ><br><br><br>                                  
-                    </div>
-                    <div class="modal-footer">
-                        <button id=close type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id=confirm class="btn btn-primary">Confirm</button>
-                    </div>
-                    </div>
+                            <p class=p2>New Password Again:</p>
+                            <input  id="confirmNewPass" name="confirmNewPass" class=input1 type=text autocomplete=off ><br><br><br>                                  
+                        </div>
+                        <div class="modal-footer">
+                            <button id=close type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id=confirm class="btn btn-primary">Confirm</button>
+                        </div>
+                        </div>
+                    </form>
                 </div>
                 </div>
             </form>
